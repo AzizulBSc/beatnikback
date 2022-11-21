@@ -6,7 +6,7 @@
         <p class="login-box-msg">Register a new membership</p>
 
         <form method="POST" action="{{ route('register') }}">
-            @csrf
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="input-group mb-3">
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                     value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Enter name">
