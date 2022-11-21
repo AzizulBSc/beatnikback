@@ -6,7 +6,7 @@
     <p class="login-box-msg">Sign in to start your session</p>
 
     <form method="POST" action="{{ route('login') }}">
-        @csrf
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="input-group mb-3">
             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
                 value="{{ old('email') }}" required autocomplete="email" autofocus>
