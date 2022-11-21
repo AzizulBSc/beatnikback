@@ -37,7 +37,8 @@
                         <div class="row">
                             <div class="col-12 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
                                 <form action="{{ url('interest') }}" method="POST">
-                                    @csrf
+
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="card-body">
                                         {{-- @include('includes.errors') --}}
                                         <div class="form-group">

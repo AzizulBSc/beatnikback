@@ -37,7 +37,8 @@
                         <div class="row">
                             <div class="col-12 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
                                 <form action="{{ URL::to('interest/' . $interest->id)}}" method="POST">
-                                    @csrf
+
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     @method('PUT')
                                     <div class="card-body">
                                         {{-- @include('includes.errors') --}}

@@ -38,7 +38,8 @@
                                 <div class="card-body">
                                     <form action="{{ route('post.update', [$post->id]) }}" method="POST"
                                         enctype="multipart/form-data">
-                                        @csrf
+
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         @method('PUT')
                                         @include('includes.errors')
                                         <div class="form-group">

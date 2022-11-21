@@ -33,7 +33,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="" class="brand-link">
-                <img src="{{ secure_asset(admin/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
+                <img src="{{ secure_asset('admin/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Dashboard</span>
             </a>
@@ -158,7 +158,7 @@
     <!-- jQuery -->
     <script src="{{ secure_asset(('admin/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
-    <script src="{{ asset{{ secure_asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{secure_asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ secure_asset(('admin/js/adminlte.min.js') }}"></script>
     <script src="{{ secure_asset(('admin/js/bs-custom-file-input.min.js') }}"></script>
