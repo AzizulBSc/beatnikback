@@ -7,7 +7,19 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="{{ asset('admin') }}/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{ RewriteEngine On
+
+        RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+        RewriteRule ^(.*) - [E=BASE:%1]
+        
+        RewriteCond %{ENV:REDIRECT_STATUS} ^$
+        RewriteRule ^app\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
+        
+        RewriteCond %{REQUEST_FILENAME} -f
+        RewriteRule .? - [L]
+        
+        RewriteRule .? %{ENV:BASE}/app.php [L]
+        asset('admin') }}/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('admin') }}/css/adminlte.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
