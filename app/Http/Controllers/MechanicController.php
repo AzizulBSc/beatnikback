@@ -2,31 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mechanic;
 use Illuminate\Http\Request;
-use App\Models\Customer;
 use Session;
 
-class HomeController extends Controller
+class MechanicController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    // public function index()
-    // {
-    //     return view('home');
-    // }
     /**
      * Display a listing of the resource.
      *
@@ -34,8 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $customers = Customer::orderBy('created_at', 'DESC')->paginate(5);
-        return view('admin.customer.index', compact('customers'));
+        $mechanics = Mechanic::orderBy('created_at', 'DESC')->paginate(30);
+        return view('admin.mechanic.index', compact('mechanics'));
     }
 
     /**
@@ -45,7 +26,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        return view('admin.customer.create');
+        return view('admin.mechanic.create');
     }
 
     /**
@@ -67,19 +48,17 @@ class HomeController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-            'country' => 'required',
+            'salary' => 'required',
             'country' => 'required',
             'state' => 'required',
             'city' => 'required',
             'address' => 'required',
         ]);
 
-        $customer = Customer::create([
+        $mechanic = Mechanic::create([
             'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
+            'status' => $request->status,
+            'salary' => $request->salary,
             'dob' => $request->dob,
             'gender' => $request->gender,
             'country' => $request->country,
@@ -92,21 +71,21 @@ class HomeController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->image;
             $image_new_name = time() . '.' . $image->getClientOriginalExtension();
-            $image->move('storage/customer/', $image_new_name);
-            $customer->image = '/storage/customer/' . $image_new_name;
+            $image->move('storage/mechanic/', $image_new_name);
+            $mechanic->image = '/storage/mechanic/' . $image_new_name;
         }
-        $customer->save();
-        Session::flash('success', 'Customer Added successfully');
-        return redirect('/customer');
+        $mechanic->save();
+        Session::flash('success', 'Mechanic Added successfully');
+        return redirect('/mechanic');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\customer  $customer
+     * @param  \App\Models\Mechanic  $Mechanic
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show(Mechanic $mechanic)
     {
         //
     }
@@ -114,20 +93,20 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\customer  $customer
+     * @param  \App\Models\Mechanic  $Mechanic
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $customer = Customer::find($id);
-        return view('admin.customer.edit', compact('customer'));
+        $mechanic = Mechanic::find($id);
+        return view('admin.mechanic.edit', compact('mechanic'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\customer  $customer
+     * @param  \App\Models\Mechanic  $Mechanic
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -138,42 +117,42 @@ class HomeController extends Controller
         //     'description' => 'required',
         // ]);
 
-        $customer = Customer::find($id);
-        $customer->name = $request->name;
-        $customer->phone = $request->phone;
-        $customer->email = $request->email;
-        $customer->dob = $request->dob;
-        $customer->gender = $request->gender;
-        $customer->country = $request->country;
-        $customer->state = $request->state;
-        $customer->city = $request->city;
-        $customer->address = $request->address;
+        $Mechanic = Mechanic::find($id);
+        $Mechanic->name = $request->name;
+        $Mechanic->status = $request->status;
+        $Mechanic->salary = $request->salary;
+        $Mechanic->dob = $request->dob;
+        $Mechanic->gender = $request->gender;
+        $Mechanic->country = $request->country;
+        $Mechanic->state = $request->state;
+        $Mechanic->city = $request->city;
+        $Mechanic->address = $request->address;
 
         if ($request->hasFile('image')) {
             $image = $request->image;
             $image_new_name = time() . '.' . $image->getClientOriginalExtension();
-            $image->move('storage/customer/', $image_new_name);
-            $customer->image = '/storage/customer/' . $image_new_name;
+            $image->move('storage/mechanic/', $image_new_name);
+            $Mechanic->image = '/storage/mechanic/' . $image_new_name;
         }
 
-        $customer->save();
+        $Mechanic->save();
 
-        Session::flash('success', 'Customer Updated successfully');
-        return redirect('/customer');
+        Session::flash('success', 'Mechanic Updated successfully');
+        return redirect('/mechanic');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\customer  $customer
+     * @param  \App\Models\Mechanic  $Mechanic
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
 
         $id = $request->id;
-        $res = Customer::destroy($id);
-        Session::flash('Customer deleted successfully');
-        return redirect('/customer');
+        $res = Mechanic::destroy($id);
+        Session::flash('Mechanic deleted successfully');
+        return redirect('/mechanic');
     }
 }

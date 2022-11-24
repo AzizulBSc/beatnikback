@@ -23,7 +23,7 @@
             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
-                    <h5>Beatnik Tech</h5>
+                    <h5>{{env('APP_NAME')}}</h5>
                 </div>
             </form>
         </nav>
@@ -74,6 +74,16 @@
                                 </p>
                             </a>
                         </li>
+
+                        <li class="nav-item mt-auto">
+                            <a href="{{ url("/customer") }}"
+                                class="nav-link {{ (request()->is('customer*')) ? 'active': '' }}">
+                                <i class="nav-icon fas fa-pen-square"></i>
+                                <p>
+                                    Customer Manages
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item mt-auto">
                             <a href="{{ url("/product") }}"
                                 class="nav-link {{ (request()->is('product*')) ? 'active': '' }}">
@@ -84,13 +94,24 @@
                             </a>
                         </li>
                         <li class="nav-item mt-auto">
-                            <a href="{{ url("/faq") }}" class="nav-link {{ (request()->is('faq*')) ? 'active': '' }}">
+                            <a href="{{ url("/mechanic") }}"
+                                class="nav-link {{ (request()->is('mechanic*')) ? 'active': '' }}">
                                 <i class="nav-icon fas fa-pen-square"></i>
                                 <p>
-                                    FAQ
+                                    Mechanic
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item mt-auto">
+                            <a href="{{ url("/vehicleCat") }}"
+                                class="nav-link {{ (request()->is('vehicleCat*')) ? 'active': '' }}">
+                                <i class="nav-icon fas fa-tag"></i>
+                                <p>
+                                    Vehicle Category
+                                </p>
+                            </a>
+                        </li>
+
                         <li class="nav-item mt-auto">
                             <a href="{{ url("/bank") }}"
                                 class="nav-link {{ (request()->is('bank*')) ? 'active': '' }}">
@@ -101,11 +122,20 @@
                             </a>
                         </li>
                         <li class="nav-item mt-auto">
-                            <a href="{{ url("/interest") }}"
-                                class="nav-link {{ (request()->is('interest*')) ? 'active': '' }}">
+                            <a href="{{ url("/service") }}"
+                                class="nav-link {{ (request()->is('service*')) ? 'active': '' }}">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
-                                    Interest Rate
+                                    Service List
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mt-auto">
+                            <a href="{{ url("/faq") }}" class="nav-link {{ (request()->is('faq*')) ? 'active': '' }}">
+                                <i class="nav-icon fas fa-pen-square"></i>
+                                <p>
+                                    FAQ
                                 </p>
                             </a>
                         </li>

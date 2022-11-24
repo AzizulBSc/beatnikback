@@ -4,8 +4,13 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\FaqController;
-use App\Http\Controllers\InterestController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\MechanicController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\VehicleCategoryController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +32,17 @@ Route::resource('product', ProductController::class);
 Route::resource('slider', SliderController::class);
 Route::resource('faq', FaqController::class);
 Route::resource('bank', BankController::class);
-Route::resource('interest', InterestController::class);
+Route::resource('service', ServiceController::class);
+Route::post('/service/destroy', [ServiceController::class, 'destroy']);
+Route::resource('mechanic', MechanicController::class);
+Route::post('/mechanic/destroy', [MechanicController::class, 'destroy']);
 
-Route::post('/interest/destroy', [InterestController::class, 'destroy']);
+Route::resource('customer', HomeController::class);
+Route::post('/customer/destroy', [HomeController::class, 'destroy']);
+
+
+
+
+
+Route::resource('vehicleCat', VehicleCategoryController::class);
+Route::post('/vehicleCat/destroy', [VehicleCategoryController::class, 'destroy']);
