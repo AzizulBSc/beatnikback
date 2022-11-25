@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interface;
 
-interface CustomerRepositoryInterface
+interface VehicleColorRepositoryInterface
 {
     public function all();
     public function store($data);

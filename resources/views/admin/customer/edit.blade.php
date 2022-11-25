@@ -84,8 +84,7 @@
                                         <div class="form-group">
                                             <label for="image">Upload Picture</label>
                                             <div class="custom-file">
-                                                <input type="file" name="image" class="custom-file-input" id="image"
-                                                    required>
+                                                <input type="file" name="image" class="custom-file-input" id="image">
                                                 <label class="custom-file-label" for="image">Choose file</label>
                                             </div>
                                         </div>

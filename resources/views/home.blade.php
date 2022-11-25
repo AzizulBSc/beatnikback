@@ -27,9 +27,9 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>{{ 50 }}</h3>
+                        <h3>{{ 20 }}</h3>
 
-                        <p>Products</p>
+                        <p>Service Requests</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-pen-square"></i>
@@ -43,7 +43,7 @@
                     <div class="inner">
                         <h3>{{ 30 }}</h3>
 
-                        <p>Bank</p>
+                        <p>Customers</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-tags"></i>
@@ -57,7 +57,7 @@
                     <div class="inner">
                         <h3>{{ 20 }}</h3>
 
-                        <p>Sliders</p>
+                        <p>Vehicles</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-tag"></i>
@@ -79,6 +79,61 @@
                 </div>
             </div>
             <!-- ./col -->
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-primary">
+                    <div class="inner">
+                        <h3>{{ 10 }}</h3>
+
+                        <p>Brands</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>{{ 10 }}</h3>
+
+                        <p>Service Completed</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>{{ 10}}</h3>
+
+                        <p>Mechanics</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>{{ 10000000 }}</h3>
+
+                        <p>Total Income</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
