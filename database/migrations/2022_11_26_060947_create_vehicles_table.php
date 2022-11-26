@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
             $table->string('model');
             $table->bigInteger('customer_id');
             $table->bigInteger('price')->nullable();
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->string('num_plate');
             $table->string('chasis_num');
             $table->year('model_year')->nullable();
+
             $table->timestamps();
         });
     }
