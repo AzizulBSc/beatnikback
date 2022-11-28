@@ -106,7 +106,7 @@
                 </li>
 
 
-                <li class="nav-item mt-auto">
+                {{-- <li class="nav-item mt-auto">
                     <a href="{{ url("/slider") }}" class="nav-link {{ (request()->is('slider*')) ? 'active': '' }}">
                         <i class="nav-icon fa fa-list"></i>
                         <p>
@@ -130,7 +130,9 @@
                             FAQ
                         </p>
                     </a>
-                </li>
+                </li> --}}
+
+
                 <li class="nav-item mt-auto">
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
