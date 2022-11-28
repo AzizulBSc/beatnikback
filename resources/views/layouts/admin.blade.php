@@ -11,10 +11,12 @@
     <link rel="stylesheet" href="{{ asset('admin') }}/css/adminlte.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    {{-- <!-- Select2 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-    <!-- Select2 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script> --}}
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('admin') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+
+
     @yield('style')
 </head>
 
@@ -57,6 +59,11 @@
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
     <script src="{{ asset('admin') }}/plugins/jquery/jquery.min.js"></script>
+
+
+
+    <!-- Select2 -->
+    <script src="{{ asset('admin') }}/plugins/select2/js/select2.full.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('admin') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->

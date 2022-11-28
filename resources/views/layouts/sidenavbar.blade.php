@@ -41,6 +41,16 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item mt-auto">
+                    <a href="{{ url("/servicereq") }}"
+                        class="nav-link {{ (request()->is('servicereq')) ? 'active': '' }}">
+                        <i class="nav-icon fas fa-paper-plane"></i>
+                        <p>
+                            Service Request
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item mt-auto">
                     <a href="{{ url("/mechanic") }}"
                         class="nav-link {{ (request()->is('mechanic*')) ? 'active': '' }}">

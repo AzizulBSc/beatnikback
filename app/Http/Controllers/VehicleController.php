@@ -80,9 +80,10 @@ class VehicleController extends Controller
      * @param  \App\Models\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function show(vehicle $vehicle)
+    public function show($id)
     {
-        //
+        $data = Vehicle::where('customer_id', $id)->get();
+        return response()->json(['data' => $data]);
     }
 
     /**

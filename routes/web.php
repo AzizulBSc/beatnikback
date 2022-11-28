@@ -5,6 +5,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServicereqController;
 use App\Http\Controllers\MechanicController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\VehicleController;
@@ -52,3 +53,10 @@ Route::post('/vehiclebrand/destroy', [VehicleBrandController::class, 'destroy'])
 
 Route::resource('vehicleCat', VehicleCategoryController::class);
 Route::post('/vehicleCat/destroy', [VehicleCategoryController::class, 'destroy']);
+
+Route::resource('servicereq', ServicereqController::class);
+Route::post('/servicereq/destroy', [ServicereqController::class, 'destroy']);
+
+
+//for ajax request 
+Route::get('vehicledata/{id}', [App\Http\Controllers\VehicleController::class, 'show']);

@@ -11,6 +11,8 @@ use App\Repositories\Interface\VehicleBrandRepositoryInterface;
 use App\Repositories\VehicleBrandRepository;
 use App\Repositories\Interface\VehicleColorRepositoryInterface;
 use App\Repositories\VehicleColorRepository;
+use App\Repositories\Interface\ReqServiceRepositoryInterface;
+use App\Repositories\ReqServiceRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(VehicleBrandRepositoryInterface::class, VehicleBrandRepository::class);
         $this->app->bind(VehicleColorRepositoryInterface::class, VehicleColorRepository::class);
         $this->app->bind(VehicleRepositoryInterface::class, VehicleRepository::class);
+        $this->app->bind(ReqServiceRepositoryInterface::class, ReqServiceRepository::class);
     }
 
     /**
