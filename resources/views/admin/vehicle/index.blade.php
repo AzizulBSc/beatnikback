@@ -88,12 +88,15 @@
                                     <td class="d-flex">
                                         <a href="{{ URL::to('vehicle/' . $vehicle->id . '/edit') }}"
                                             class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>
+                                        @if (Auth::user()->role==1)
+
                                         <form action="{{ url("vehicle/destroy")}}" class="mr-1" method="POST">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $vehicle->id }}">
                                             <button type="submit" class="btn btn-sm btn-danger"> <i
                                                     class="fas fa-trash"></i> </button>
                                         </form>
+                                        @endif
 
                                     </td>
                                 </tr>

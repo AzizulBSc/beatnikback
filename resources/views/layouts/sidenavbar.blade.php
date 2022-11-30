@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link">
-        <img src="{{ asset('admin') }}/img/AdminLTELogo.png" alt="AdminLTE Logo"
+        <img src="{{ asset('admin') }}/img/user8-128x128.jpg" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Dashboard</span>
     </a>
@@ -33,16 +33,6 @@
                     </a>
                 </li>
                 <li class="nav-item mt-auto">
-                    <a href="{{ url("/customer") }}"
-                        class="nav-link {{ (request()->is('customer*')) ? 'active': '' }}">
-                        <i class="nav-icon fas fa-pen-square"></i>
-                        <p>
-                            Customer Manages
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item mt-auto">
                     <a href="{{ url("/servicereq") }}"
                         class="nav-link {{ (request()->is('servicereq')) ? 'active': '' }}">
                         <i class="nav-icon fas fa-paper-plane"></i>
@@ -52,6 +42,35 @@
                     </a>
                 </li>
                 <li class="nav-item mt-auto">
+                    <a href="{{ url("/vehicle") }}" class="nav-link {{ (request()->is('vehicle')) ? 'active': '' }}">
+                        <i class="nav-icon fas fa-car"></i>
+                        <p>
+                            Vehicle Manage
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item mt-auto">
+                    <a href="{{ url("/service") }}" class="nav-link {{ (request()->is('service')) ? 'active': '' }}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Service List
+                        </p>
+                    </a>
+                </li>
+
+                @if (auth::user()->role==1)
+                <li class="nav-item mt-auto">
+                    <a href="{{ url("/customer") }}"
+                        class="nav-link {{ (request()->is('customer*')) ? 'active': '' }}">
+                        <i class="nav-icon fas fa-pen-square"></i>
+                        <p>
+                            Customer Manages
+                        </p>
+                    </a>
+                </li>
+
+
+                <li class="nav-item mt-auto">
                     <a href="{{ url("/mechanic") }}"
                         class="nav-link {{ (request()->is('mechanic*')) ? 'active': '' }}">
                         <i class="nav-icon fas fa-wrench"></i>
@@ -60,14 +79,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item mt-auto">
-                    <a href="{{ url("/vehicle") }}" class="nav-link {{ (request()->is('vehicles')) ? 'active': '' }}">
-                        <i class="nav-icon fas fa-car"></i>
-                        <p>
-                            Vehicle Manage
-                        </p>
-                    </a>
-                </li>
+
                 <li class="nav-item mt-auto">
                     <a href="{{ url("/vehicleCat") }}"
                         class="nav-link {{ (request()->is('vehicleCat*')) ? 'active': '' }}">
@@ -96,26 +108,11 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item mt-auto">
-                    <a href="{{ url("/service") }}" class="nav-link {{ (request()->is('service*')) ? 'active': '' }}">
-                        <i class="nav-icon fas fa-list"></i>
-                        <p>
-                            Service List
-                        </p>
-                    </a>
-                </li>
 
+
+                @endif
 
                 {{-- <li class="nav-item mt-auto">
-                    <a href="{{ url("/slider") }}" class="nav-link {{ (request()->is('slider*')) ? 'active': '' }}">
-                        <i class="nav-icon fa fa-list"></i>
-                        <p>
-                            Slider
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item mt-auto">
                     <a href="{{ url("/product") }}" class="nav-link {{ (request()->is('product*')) ? 'active': '' }}">
                         <i class="nav-icon fas fa-tag"></i>
                         <p>
@@ -140,6 +137,14 @@
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
                             Logout
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item mt-auto">
+                    <a href="{{ url("/") }}" class="nav-link {{ (request()->is('/')) ? 'active': '' }}">
+                        <i class="nav-icon fas fa-globe"></i>
+                        <p>
+                            Go to Website
                         </p>
                     </a>
                 </li>

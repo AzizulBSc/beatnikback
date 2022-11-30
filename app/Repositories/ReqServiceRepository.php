@@ -2,31 +2,46 @@
 
 namespace App\Repositories;
 
+use App\Models\Customer;
 use App\Models\Servicereq;
 use App\Models\Reqserviceid;
 use App\Repositories\Interface\ReqServiceRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ReqServiceRepository implements ReqServiceRepositoryInterface
 {
     public function all()
     {
-        return Servicereq::latest()->with('vehicle', 'owner')->paginate(30);
+        if (Auth::user()->role == 1) {
+            return Servicereq::latest()->with('req_service_list.service', 'vehicle', 'owner')->paginate(30);
+        } else {
+            $customer = Customer::select('id')->where('user_id', Auth::user()->id)->first();
+            return Servicereq::where('customer_id', $customer->id)->with('req_service_list.service', 'vehicle', 'owner')->paginate(30);
+        }
     }
     public function store($data)
     {
 
         $req_service_id = explode(",", $data['service_id']);
+
+        if (array_key_exists('mechanic_id', $data)) $mechanic_id = $data['mechanic_id'];
+        else $mechanic_id = null;
+        if (array_key_exists('paid', $data)) $paid = $data['paid'];
+        else $paid = 0;
+        if (array_key_exists('status', $data)) $status = $data['status'];
+        else $status = 1;
+
         $servicereq = Servicereq::create([
             'vehicle_id' => $data['vehicle_id'],
             'customer_id' => $data['customer_id'],
-            'mechanic_id' => $data['mechanic_id'],
-            'deadline' => $data['deadline'],
             'payment' => $data['payment'],
-            'paid' => $data['paid'],
-            'status' => $data['status'],
-            'description' => $data['description']
+            'description' => $data['description'],
+            'deadline' => $data['deadline'],
+            'mechanic_id' => $mechanic_id,
+            'paid' => $paid,
+            'status' => $status,
         ]);
 
         $servicereq->save();
@@ -57,16 +72,22 @@ class ReqServiceRepository implements ReqServiceRepositoryInterface
         //     'description' => $data['description']
         // ]);
 
+        if (array_key_exists('mechanic_id', $data)) $mechanic_id = $data['mechanic_id'];
+        else $mechanic_id = null;
+        if (array_key_exists('paid', $data)) $paid = $data['paid'];
+        else $paid = 0;
+        if (array_key_exists('status', $data)) $status = $data['status'];
+        else $status = 1;
 
 
         $servicereq = Servicereq::find($id);
         $servicereq->vehicle_id = $data['vehicle_id'];
         $servicereq->customer_id = $data['customer_id'];
-        $servicereq->mechanic_id = $data['mechanic_id'];
+        $servicereq->mechanic_id = $mechanic_id;
         $servicereq->deadline = $data['deadline'];
         $servicereq->payment = $data['payment'];
-        $servicereq->paid = $data['paid'];
-        $servicereq->status = $data['status'];
+        $servicereq->paid = $paid;
+        $servicereq->status = $status;
         $servicereq->description = $data['description'];
         $servicereq->save();
         DB::table('reqserviceids')->where('servicereq_id', $id)->delete();

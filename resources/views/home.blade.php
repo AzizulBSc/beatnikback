@@ -29,7 +29,7 @@
                     <div class="inner">
                         <h3>{{ 20 }}</h3>
 
-                        <p>Service Requests</p>
+                        <p>Service Request</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-pen-square"></i>
@@ -151,7 +151,7 @@
                                 <tr>
                                     <th style="width: 10px">#</th>
                                     <th>Image</th>
-                                    <th>Product Name</th>
+                                    <th>ServicName</th>
                                     <th>Price</th>
                                     <th>Details</th>
                                     <th>Created Date</th>

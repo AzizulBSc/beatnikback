@@ -9,6 +9,7 @@ use App\Models\VehicleCategory;
 use App\Models\VehicleColor;
 use Illuminate\Http\Request;
 use App\Repositories\Interface\VehicleRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 use  Session;
 
 class VehicleController extends Controller
@@ -39,6 +40,9 @@ class VehicleController extends Controller
     public function create()
     {
         $customers = Customer::all();
+        if (Auth::user()->role == 0) {
+            $customers = Customer::where('user_id', Auth::user()->id)->get();
+        }
         $colors = VehicleColor::all();
         $brands = VehicleBrand::all();
         $category = VehicleCategory::all();
@@ -96,6 +100,9 @@ class VehicleController extends Controller
     {
         $vehicle = $this->vehicleRepository->find($id);
         $customers = Customer::all();
+        if (Auth::user()->role == 0) {
+            $customers = Customer::where('user_id', Auth::user()->id)->get();
+        }
         $colors = VehicleColor::all();
         $brands = VehicleBrand::all();
         $category = VehicleCategory::all();

@@ -22,7 +22,6 @@
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
 
@@ -45,7 +44,7 @@
         <footer class="main-footer">
             <!-- To the right -->
             <div class="float-right d-none d-sm-inline">
-                <div class="mb-0">Developed By Azizl Hoque</div>
+                <div class="mb-0">Developed By Azizul Hoque</div>
             </div>
         </footer>
     </div>
@@ -59,9 +58,6 @@
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
     <script src="{{ asset('admin') }}/plugins/jquery/jquery.min.js"></script>
-
-
-
     <!-- Select2 -->
     <script src="{{ asset('admin') }}/plugins/select2/js/select2.full.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -72,12 +68,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     @yield('script')
     <script>
-        @if(Session::has('success'))
+    @if(Session::has('success'))
   toastr.success("{{ Session::get('success') }}");
   @endif
   $(document).ready(function () {
     bsCustomFileInput.init()
   })
+    </script>
+
+
+
+
+    <script>
+        (function (window, document) {
+        var loader = function () {
+            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+            script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+            tag.parentNode.insertBefore(script, tag);
+        };
+
+        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+    })(window, document);
     </script>
 </body>
 

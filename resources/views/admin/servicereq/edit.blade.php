@@ -110,6 +110,20 @@
 
 
                                         <div class="row form-group">
+
+
+                                            <div class="col-sm-12 col-lg-6">
+                                                <!-- textarea -->
+                                                <div class="form-group">
+                                                    <label>Description</label>
+
+                                                    <div class="text-danger">Old Des: {{ $servicereq->description }}
+                                                    </div>
+
+                                                    <textarea name="description" class="form-control" rows="3"
+                                                        placeholder="Describe this..."></textarea>
+                                                </div>
+                                            </div>
                                             <div class="col-lg-6 col-sm-12">
                                                 <label>Priliminiry deadline</label>
                                                 <div class="text-danger">Old date: {{ $servicereq->deadline }}</div>
@@ -117,15 +131,10 @@
                                                 <input type="date" name="deadline" class="form-control">
 
                                             </div>
-                                            <div class="col-lg-6 col-sm-12">
-                                                <label for="paid">Cash Paid</label>
-                                                <div class="text-danger">Paid :{{ $servicereq->paid }}</div>
-                                                <input name="paid" type="number" class="form-control" value="">
-                                            </div>
 
                                         </div>
 
-
+                                        @if (Auth::user()->role==1)
                                         <div class="row form-group">
                                             <div class="col-lg-6 col-sm-12">
                                                 <label for="mechanic_id">Assign Mechanic</label>
@@ -190,20 +199,15 @@
 
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12 col-lg-8">
-                                                <!-- textarea -->
-                                                <div class="form-group">
-                                                    <label>Description</label>
 
-                                                    <div class="text-danger">Old Des: {{ $servicereq->description }}
-                                                    </div>
 
-                                                    <textarea name="description" class="form-control" rows="3"
-                                                        placeholder="Describe this..."></textarea>
-                                                </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <label for="paid">Cash Paid</label>
+                                                <div class="text-danger">Paid :{{ $servicereq->paid }}</div>
+                                                <input name="paid" type="number" class="form-control" value="">
                                             </div>
-
                                         </div>
+                                        @endif
                                     </div>
 
                                     <div class="form-group col-12">

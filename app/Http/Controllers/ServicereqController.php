@@ -9,6 +9,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Repositories\Interface\ReqServiceRepositoryInterface;
 use Session;
+use Illuminate\Support\Facades\Auth;
 
 
 class ServicereqController extends Controller
@@ -39,6 +40,9 @@ class ServicereqController extends Controller
     public function create()
     {
         $customers = Customer::all();
+        if (Auth::user()->role == 0) {
+            $customers = Customer::where('user_id', Auth::user()->id)->get();
+        }
         $mechanics = Mechanic::all();
         $services = Service::all();
         return view('admin.servicereq.create', compact('customers', 'mechanics', 'services'));
@@ -83,6 +87,9 @@ class ServicereqController extends Controller
     {
         $servicereq = $this->service_req->find($id);
         $customers = Customer::all();
+        if (Auth::user()->role == 0) {
+            $customers = Customer::where('user_id', Auth::user()->id)->get();
+        }
         $mechanics = Mechanic::all();
         $services = Service::all();
         return view('admin.servicereq.edit', compact('servicereq', 'customers', 'mechanics', 'services'));

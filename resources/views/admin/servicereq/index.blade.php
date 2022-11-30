@@ -100,7 +100,7 @@
                                     </td>
                                     <td>{{ $servicereq->created_at->format('d M, Y')}}</td>
                                     <td>{{ $servicereq->deadline}}</td>
-                                    <td>
+                                    <td class="text-center">
 
 
 
@@ -153,7 +153,12 @@
                                     <td class="d-flex">
                                         <a href="{{ URL::to('servicereq/' . $servicereq->id . '/edit') }}"
                                             class="btn btn-sm btn-primary mr-1">
-                                            <i class="fas fa-edit"></i> </a>
+                                            <i class="fas fa-edit"></i> Update</a>
+                                        <a href="{{ url('invoice/' . $servicereq->id) }}"
+                                            class="btn btn-sm btn-info  mr-1"><i class="fas fa-print"></i>Invoice
+                                        </a>
+                                        @if (Auth::user()->role==1)
+
                                         <form action="{{ url("servicereq/destroy")}}" class="mr-1" method="POST">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $servicereq->id }}">
@@ -161,6 +166,12 @@
                                                     class="fas fa-trash"></i> </button>
                                         </form>
 
+                                        @endif
+                                        @if (Auth::user()->role==0 && $servicereq->payment!=$servicereq->paid )
+                                        <a href="{{ url('checkout/' . $servicereq->id) }}"
+                                            class="btn btn-sm btn-success"><i class="fas fa-edit"></i>Payment
+                                        </a>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

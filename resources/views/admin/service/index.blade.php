@@ -28,7 +28,9 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title">Service List</h3>
-                            <a href="{{ url("/service/create") }}" class="btn btn-primary">Create Service </a>
+                            @if (Auth::user()->role==1) <a href="{{ url("/service/create") }}"
+                                class="btn btn-primary">Create Service </a>
+                            @endif
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -54,13 +56,14 @@
                                         <div style="max-width: 70px; max-height:70px;overflow:hidden">
                                             <img src="{{ asset($service->image) }}" class="img-fluid img-rounded"
                                                 alt="">
-                                    </div>
+                                        </div>
                                     </td>
                                     <td>{{ $service->name }}</td>
                                     <td>{{ $service->price }}</td>
                                     <td>{{ $service->description }}</td>
                                     <td>{{ $service->created_at->format('d M, Y') }}</td>
                                     <td class="d-flex">
+                                        @if (auth::user()->role==1)
                                         <a href="{{ URL::to('service/' . $service->id . '/edit') }}"
                                             class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>
                                         <form action="{{ url("service/destroy")}}" class="mr-1" method="POST">
@@ -69,7 +72,7 @@
                                             <button type="submit" class="btn btn-sm btn-danger"> <i
                                                     class="fas fa-trash"></i> </button>
                                         </form>
-
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

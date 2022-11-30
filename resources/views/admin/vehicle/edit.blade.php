@@ -41,13 +41,22 @@
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     @method('PUT')
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="model">Vehicle Model</label>
-                                            <input type="text" name="model" value="{{$vehicle->model}}"
-                                                class="form-control" placeholder="Enter Vehicle Model" required>
+                                        <div class="row form-group">
+
+                                            <div class="col-6">
+                                                <label for="model">Vehicle Model</label>
+                                                <input type="text" name="model" value="{{$vehicle->model}}"
+                                                    class="form-control" placeholder="Enter Vehicle Model" required>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="name">Vehicle Name</label>
+                                                <input type="text" name="name" value="{{$vehicle->name}}"
+                                                    class="form-control" placeholder="Enter Vehicle name" required>
+                                            </div>
                                         </div>
                                         <div class="row form-group">
-                                            <div class="col-6"><label for="vehicle_brand_id">Vehicle Brand</label>
+                                            <div class="col-6">
+                                                <label for="vehicle_brand_id">Vehicle Brand</label>
                                                 <select name="vehicle_brand_id" id="vehicle_brand_id"
                                                     class="form-control" required>
                                                     <option value="" style="display: none" selected>Select Brand
@@ -115,7 +124,7 @@
                                             <!-- Dropdown -->
                                             <select name="customer_id" id="owner" class="form-control" type="number"
                                                 required>
-                                                <option value="">Select User</option>
+                                                <option value="">Select Owner</option>
                                                 @foreach ($customers as $customer)
                                                 <option value={{ $customer->id }}>{{$customer->name }}({{
                                                     $customer->id }})</option>
