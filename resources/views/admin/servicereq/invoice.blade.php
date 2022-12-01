@@ -63,11 +63,12 @@
                             <div class="col-sm-4 invoice-col">
                                 To
                                 <address>
-                                    <strong>John Doe</strong><br>
-                                    795 Folsom Ave, Suite 600<br>
-                                    San Francisco, CA 94107<br>
-                                    Phone: (555) 539-1037<br>
-                                    Email: john.doe@example.com
+                                    <strong>{{ $servicereq->owner->name}}</strong><br>
+                                    {{ $servicereq->owner->address}}<br>
+                                    {{ $servicereq->owner->city}},{{ $servicereq->owner->state}},{{
+                                    $servicereq->owner->country}}<br>
+                                    Phone: {{ $servicereq->owner->phone}}<br>
+                                    Email: {{ $servicereq->owner->email}}
                                 </address>
                             </div>
                             <!-- /.col -->
@@ -87,12 +88,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($servicereq->req_service_list as $service)
                                         <tr>
                                             <td>1</td>
-                                            <td>Call of Duty</td>
-                                            <td>El snort testosterone trophy driving gloves handsome</td>
-                                            <td>$64.50</td>
+                                            <td>{{ $service->service->name }}</td>
+                                            <td>{{ $service->service->description }}</td>
+                                            <td>{{ $service->service->price }}</td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -107,8 +110,7 @@
 
                                 <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
                                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi consectetur ad
-                                    veritatis eum inventore, nulla perferendis perspiciatis quisquam a unde at minima
-                                    aliquam aspernatur ea sapiente molestiae, tempora porro voluptas.
+                                    veritatis eum inventore, nulla
                                 </p>
                             </div>
                             <!-- /.col -->
@@ -119,15 +121,54 @@
                                         <tbody>
                                             <tr>
                                                 <th style="width:50%">Subtotal:</th>
-                                                <td>$250.30</td>
+                                                <td>{{$servicereq->payment }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Paid</th>
-                                                <td>$10.34</td>
+                                                <td>{{ $servicereq->paid}}</td>
                                             </tr>
-                                            <tr>
+                                            <tr> @php
+
+                                                $statusclass = "float-right badge";
+                                                $statcode = $servicereq->status;
+                                                if($statcode==0) {
+                                                $status = "Cancelled";
+                                                $statusclass = $statusclass . " bg-danger";
+                                                }
+                                                if($statcode==1) {
+                                                $status = "Requested";
+                                                $statusclass = $statusclass . " bg-warning";
+                                                }
+                                                if($statcode==2) {
+                                                $status = "Accepted";
+                                                $statusclass = $statusclass . " bg-info";
+                                                }
+                                                if($statcode==3) {
+                                                $status = "Inprogress";
+                                                $statusclass = $statusclass . " bg-info";
+                                                }
+                                                if($statcode==4) {
+                                                $status = "Completed";
+                                                $statusclass = $statusclass . " bg-success";
+                                                }
+                                                if($statcode==5) {
+                                                $status = "Paid";
+                                                $statusclass = $statusclass . " bg-info";
+                                                }
+                                                if($statcode==6) {
+                                                $status = "Delivered";
+                                                $statusclass = $statusclass . " bg-success";
+                                                }
+                                                if($statcode==7) {
+                                                $status = "Closed";
+                                                $statusclass = $statusclass . " bg-danger";
+                                                }
+                                                @endphp
+
+
                                                 <th>Status:</th>
-                                                <td>$5.80</td>
+                                                <td> <span class=" text-center ,{{ $statusclass }}">{{ $status }}</span>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

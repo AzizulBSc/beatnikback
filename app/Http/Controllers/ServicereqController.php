@@ -123,4 +123,12 @@ class ServicereqController extends Controller
         Session::flash('Service Request Deleted Successfully');
         return redirect('/servicereq');
     }
+
+
+    public function invoice($id)
+    {
+
+        $servicereq = $this->service_req->find($id);
+        return view('admin.servicereq.invoice', compact('servicereq'));
+    }
 }

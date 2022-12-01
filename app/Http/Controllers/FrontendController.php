@@ -53,4 +53,13 @@ class FrontendController extends Controller
             'mechanics'
         ));
     }
+    public function about()
+    {
+        $services =  Service::latest()->get();
+        $mechanics =  Mechanic::latest()->get();
+        return view('frontend.about', compact(
+            'mechanics',
+            'services'
+        ));
+    }
 }

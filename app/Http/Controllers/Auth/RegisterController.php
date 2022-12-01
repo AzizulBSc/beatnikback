@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Customer;
 
 class RegisterController extends Controller
 {
@@ -64,10 +65,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $user->save();
+        $user_id = $user->id;
+        $customer = Customer::create([
+            'name' => $data['name'],
+            'user_id' => $user_id,
+            'email' => $data['email'],
+            'phone' => "01832-----",
+            'dob' => "2020-12-12",
+            'gender' => "male",
+            'country' => "Bangladesh",
+            'state' => "Chittagong",
+            'city' => "Chittagong",
+            'address' => "lorem ipsum dolor sit amet, consectetur",
+            'image' => '/storage/customer/default_customer.jpg',
+        ]);
+        $customer->save();
+        return $user;
     }
 }

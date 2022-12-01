@@ -21,16 +21,8 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url('/services')}}">Our Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/mechanics')}}">Our Mechanics</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/products')}}">Products</a></li>
-                    {{-- <li class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">SHOP</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="cart.html">Cart</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
-                            <li><a href="shop-detail.html">Shop Detail</a></li>
-                        </ul>
-                    </li> --}}
                     <li class="nav-item"><a class="nav-link" href="{{ url('/about')}}">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/contact')}}">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Get Service</a></li>
 
                     @if (Auth::check())
                     <li class="nav-item"><a class="nav-link" href="{{ url('/home')}}">Dashboard</li>

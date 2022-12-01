@@ -67,6 +67,8 @@ Route::resource('servicereq', ServicereqController::class);
 Route::post('/servicereq/destroy', [ServicereqController::class, 'destroy']);
 
 
+Route::get('/invoice/{id}',  [ServicereqController::class, 'invoice']);
+
 //for ajax request 
 Route::get('vehicledata/{id}', [App\Http\Controllers\VehicleController::class, 'show']);
 
@@ -85,7 +87,3 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
-
-Route::get('/invoice/{id}', function () {
-    return view("admin.servicereq.invoice");
-});
