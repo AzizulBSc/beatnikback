@@ -42,7 +42,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 Route::resource('product', ProductController::class);
+Route::post('/product/destroy', [ProductController::class, 'destroy']);
 Route::resource('slider', SliderController::class);
+Route::post('/slider/destroy', [SliderController::class, 'destroy']);
 Route::resource('faq', FaqController::class);
 Route::resource('bank', BankController::class);
 Route::resource('service', ServiceController::class);

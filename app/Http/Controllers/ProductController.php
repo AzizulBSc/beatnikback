@@ -58,8 +58,8 @@ class ProductController extends Controller
             $image_new_name = time() . '.' . $image->getClientOriginalExtension();
             $image->move('storage/product/', $image_new_name);
             $product->image = '/storage/product/' . $image_new_name;
-            $product->save();
         }
+        $product->save();
         Session::flash('success', 'Product Added successfully');
         return redirect('/product');
     }
@@ -81,9 +81,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('admin.product.edit', compact('product'));
     }
 
     /**
@@ -93,9 +94,25 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->image = 'image.jpg';
+        $product->description = $request->description;
+
+
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('storage/product/', $image_new_name);
+            $product->image = '/storage/product/' . $image_new_name;
+        }
+        $product->save();
+        Session::flash('success', 'Product Updated successfully');
+        return redirect('/product');
     }
 
     /**
@@ -104,9 +121,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request)
     {
-        //
+        $res = Product::destroy($request->id);
+        Session::flash('Product deleted successfully');
+        return redirect('/product');
     }
-
 }

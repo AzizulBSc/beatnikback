@@ -50,25 +50,21 @@
                                     <td>{{ $slider->id }}</td>
                                     <td>
                                         <div style="max-width: 70px; max-height:70px;overflow:hidden">
-                                            <img src="{{ asset($slider->image) }}" class="img-fluid img-rounded"
-                                                alt="">
+                                            <img src="{{ asset($slider->image) }}" class="img-fluid img-rounded" alt="">
                                         </div>
                                     </td>
                                     <td>{{ $slider->title }}</td>
                                     <td>{{ $slider->created_at->format('d M, Y') }}</td>
                                     <td class="d-flex">
-                                        action
-                                        {{-- <a href="{{ route('slider.show', [$slider->id]) }}"
-                                            class="btn btn-sm btn-success mr-1"> <i class="fas fa-eye"></i> </a>
-                                        <a href="{{ route('slider.edit', [$slider->id]) }}"
+                                        <a href="{{ URL::to('slider/' . $slider->id . '/edit') }}"
                                             class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>
-                                        <form action="{{ route('slider.destroy', [$slider->id]) }}" class="mr-1"
-                                            method="slider">
-                                            @method('DELETE')
+                                        <form action="{{ url("slider/destroy")}}" class="mr-1" method="POST">
                                             @csrf
+                                            <input type="hidden" name="id" value="{{ $slider->id }}">
                                             <button type="submit" class="btn btn-sm btn-danger"> <i
                                                     class="fas fa-trash"></i> </button>
-                                        </form> --}}
+                                        </form>
+
                                     </td>
                                 </tr>
                                 @endforeach

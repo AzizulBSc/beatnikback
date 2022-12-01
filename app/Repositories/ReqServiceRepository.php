@@ -17,8 +17,14 @@ class ReqServiceRepository implements ReqServiceRepositoryInterface
         if (Auth::user()->role == 1) {
             return Servicereq::latest()->with('req_service_list.service', 'vehicle', 'owner')->paginate(30);
         } else {
+
             $customer = Customer::select('id')->where('user_id', Auth::user()->id)->first();
-            return Servicereq::where('customer_id', $customer->id)->with('req_service_list.service', 'vehicle', 'owner')->paginate(30);
+            if ($customer) {
+                $id = $customer->id;
+            } else {
+                $id = 0;
+            }
+            return Servicereq::where('customer_id', $id)->with('req_service_list.service', 'vehicle', 'owner')->paginate(30);
         }
     }
     public function store($data)

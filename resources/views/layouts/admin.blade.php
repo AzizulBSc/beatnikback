@@ -24,13 +24,14 @@
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
-            <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
-                <div class="input-group input-group-sm">
-                    <h5>{{env('APP_NAME')}}</h5>
-                </div>
-            </form>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('home') }}" class="nav-link">Home</a>
+                </li>
+            </ul>
         </nav>
         <!-- /.navbar -->
         @include('layouts.sidenavbar')
@@ -68,7 +69,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     @yield('script')
     <script>
-    @if(Session::has('success'))
+        @if(Session::has('success'))
   toastr.success("{{ Session::get('success') }}");
   @endif
   $(document).ready(function () {

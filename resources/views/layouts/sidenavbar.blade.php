@@ -108,11 +108,7 @@
                         </p>
                     </a>
                 </li>
-
-
-                @endif
-
-                {{-- <li class="nav-item mt-auto">
+                <li class="nav-item mt-auto">
                     <a href="{{ url("/product") }}" class="nav-link {{ (request()->is('product*')) ? 'active': '' }}">
                         <i class="nav-icon fas fa-tag"></i>
                         <p>
@@ -120,6 +116,19 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item mt-auto">
+                    <a href="{{ url("/slider") }}" class="nav-link {{ (request()->is('slider*')) ? 'active': '' }}">
+                        <i class="nav-icon fas fa-tag"></i>
+                        <p>
+                            Sliders
+                        </p>
+                    </a>
+                </li>
+
+
+                @endif
+
+                {{--
                 <li class="nav-item mt-auto">
                     <a href="{{ url("/faq") }}" class="nav-link {{ (request()->is('faq*')) ? 'active': '' }}">
                         <i class="nav-icon fas fa-pen-square"></i>
@@ -148,13 +157,6 @@
                         </p>
                     </a>
                 </li>
-                {{-- <li class="text-center mt-5">
-                    <a href="{{ route('website') }}" class="btn btn-primary text-white" target="_blank">
-                        <p class="mb-0">
-                            View Website
-                        </p>
-                    </a>
-                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

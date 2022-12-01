@@ -12,8 +12,8 @@
 
         <!-- Start copyright  -->
         <div class="footer-copyright">
-            <p class="footer-company">All Rights Reserved. © 2018 <a href="#">ThewayShop</a> Design By :
-                <a href="https://html.design/">html design</a>
+            <p class="footer-company">All Rights Reserved. © 2018 <a href="#"></a> Design By :
+                <a href="#">xyz</a>
             </p>
         </div>
         <!-- End copyright  -->

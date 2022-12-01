@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Session;
+use Exception;
 
 class SliderController extends Controller
 {
@@ -75,9 +76,10 @@ class SliderController extends Controller
      * @param  \App\Models\Slider  $slider
      * @return \Illuminate\Http\Response
      */
-    public function edit(Slider $slider)
+    public function edit($id)
     {
-        //
+        $slider = Slider::find($id);
+        return view('admin.slider.edit', compact('slider'));
     }
 
     /**
@@ -87,9 +89,21 @@ class SliderController extends Controller
      * @param  \App\Models\Slider  $slider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Slider $slider)
+    public function update(Request $request, $id)
     {
-        //
+        $slider = Slider::find($id);
+        $slider->title = $request->title;
+
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('storage/slider/', $image_new_name);
+            $slider->image = '/storage/slider/' . $image_new_name;
+        }
+
+        $slider->save();
+        Session::flash('success', 'Slider Updated successfully');
+        return redirect('/slider');
     }
 
     /**
@@ -98,8 +112,10 @@ class SliderController extends Controller
      * @param  \App\Models\Slider  $slider
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Slider $slider)
+    public function destroy(Request $request)
     {
-        //
+        $res = Slider::destroy($request->id);
+        Session::flash('Slider deleted successfully');
+        return redirect('/slider');
     }
 }

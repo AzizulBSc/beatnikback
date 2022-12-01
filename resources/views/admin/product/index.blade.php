@@ -61,18 +61,15 @@
                                     <td>{{ $product->description }}</td>
                                     <td>{{ $product->created_at->format('d M, Y') }}</td>
                                     <td class="d-flex">
-                                        action
-                                        {{-- <a href="{{ route('Product.show', [$Product->id]) }}"
-                                            class="btn btn-sm btn-success mr-1"> <i class="fas fa-eye"></i> </a>
-                                        <a href="{{ route('Product.edit', [$Product->id]) }}"
+                                        <a href="{{ URL::to('product/' . $product->id . '/edit') }}"
                                             class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>
-                                        <form action="{{ route('Product.destroy', [$Product->id]) }}" class="mr-1"
-                                            method="Product">
-                                            @method('DELETE')
+                                        <form action="{{ url("product/destroy")}}" class="mr-1" method="POST">
                                             @csrf
+                                            <input type="hidden" name="id" value="{{ $product->id }}">
                                             <button type="submit" class="btn btn-sm btn-danger"> <i
                                                     class="fas fa-trash"></i> </button>
-                                        </form> --}}
+                                        </form>
+
                                     </td>
                                 </tr>
                                 @endforeach

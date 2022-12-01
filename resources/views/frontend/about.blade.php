@@ -33,7 +33,7 @@
                 <div class="banner-frame">
                     <video class="img-thumbnail img-fluid" style=" border: 4px solid red; border-radius: 50px 20px;"
                         controls autoplay>
-                        <source src="{{ asset('frontend') }}/images/front/videoplayback.mp4" type="video/mp4"
+                        <source src="{{ asset('frontend') }}/images/videoplayback.mp4" type="video/mp4"
                             style="border-radius: 3px" width="200" height="30">
                     </video>
                 </div>
@@ -65,7 +65,7 @@
         <div class="row my-4">
             <div class="col-12">
                 <h2 class="noo-sh-title">Meet Our Team</h2>
-                
+
             </div> @foreach ($mechanics as $mechanic )
             <div class="col-sm-6 col-lg-3">
                 <div class="hover-team">

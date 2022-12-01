@@ -9,8 +9,6 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-
-
         <div class="carousel-item active">
             <img class="d-block w-100" src="{{ asset('frontend') }}/images/banner-01.jpg" alt="First slide">
         </div>

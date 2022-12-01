@@ -6,13 +6,13 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Create Product</h1>
+                <h1 class="m-0 text-dark">Update Slider</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     {{-- <li class="breadcrumb-item"><a href="{{ route('website') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Product list</a></li> --}}
-                    <li class="breadcrumb-item active">Create Product</li>
+                    <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Slider list</a></li> --}}
+                    <li class="breadcrumb-item active">Update Slider</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,23 +28,34 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="card-title">Add FAQ</h3>
-                            <a href="{{ url('/faq') }}" class="btn btn-primary">Go Back to FAQ List</a>
+                            <h3 class="card-title">Update Slider</h3>
+                            <a href="{{ url('/slider') }}" class="btn btn-primary">Go Back to Slider List</a>
 
                         </div>
                     </div>
                     <div class="card-body p-0">
                         <div class="row">
                             <div class="col-12 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
-                                <form action="{{ url('faq') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ URL::to('slider',[$slider->id]) }}" method="post"
+                                    enctype="multipart/form-data">
 
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    @method('PUT')
                                     <div class="card-body">
                                         {{-- @include('includes.errors') --}}
                                         <div class="form-group">
-                                            <label for="description">FAQ Description</label>
-                                            <textarea name="description" rows="4" class="form-control"
-                                                placeholder="Enter description" required></textarea>
+                                            <label for="title">Slider Title</label>
+                                            <input type="text" name="title" value="{{ $slider->title }}"
+                                                class="form-control" placeholder="Enter Slider Title" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="image">Slider Image</label>
+                                            <div class="custom-file">
+                                                <input type="file" name="image" class="custom-file-input" id="image"
+                                                    required>
+                                                <label class="custom-file-label" for="image">Choose file</label>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -60,4 +71,19 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('style')
+<link rel="stylesheet" href="{{ asset('/admin/css/summernote-bs4.min.css') }}">
+@endsection
+
+@section('script')
+<script src="{{ asset('/admin/js/summernote-bs4.min.js') }}"></script>
+<script>
+    $('#description').summernote({
+            placeholder: 'Slider Description',
+            tabsize: 2,
+            height: 300
+        });
+</script>
 @endsection
