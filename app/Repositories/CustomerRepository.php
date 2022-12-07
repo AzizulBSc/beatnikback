@@ -5,6 +5,8 @@ namespace App\Repositories;
 use App\Models\Customer;
 use App\Repositories\Interface\CustomerRepositoryInterface;
 use Exception;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerRepository implements CustomerRepositoryInterface
 {
@@ -35,6 +37,12 @@ class CustomerRepository implements CustomerRepositoryInterface
         } catch (Exception $e) {
         }
         $customer->save();
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make("12345678"),
+        ]);
+        $user->save();
     }
 
     public function find($id)
