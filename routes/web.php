@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\Message;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\BankController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\VehicleColorController;
 use App\Http\Controllers\VehicleBrandController;
 use App\Http\Controllers\VehicleCategoryController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +40,21 @@ Route::get('products', [FrontendController::class, 'getproducts']);
 Route::get('services', [FrontendController::class, 'getservices']);
 Route::get('about', [FrontendController::class, 'about']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('location', function () {
+    return view('frontend.location');
+});
+
+Route::get('adlocation', function () {
+    return view('admin.location');
+});
+
+//Route::get('/send', 'App\Http\Controllers\MailController@index');
+Route::get('/mail', 'App\Http\Controllers\MailController@index1');
+Route::any('/mailsend', 'App\Http\Controllers\MailController@send');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index1'])->name('home');
+Route::get('/otp', [App\Http\Controllers\HomeController::class, 'index'])->name('otp');
+Route::post('/otp', [App\Http\Controllers\HomeController::class, 'otp_verify']);
 
 
 Auth::routes();
@@ -90,6 +106,17 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
+
+
+
+//chat route
+
+Route::post('send-message', function (Request $request) {
+    event(new Message($request->username, $request->message));
+    return ['success' => true];
+});
+
+Route::get('chat', [App\Http\Controllers\ChatController::class, 'chat']);
 
 
 Route::get('/secret', function () {

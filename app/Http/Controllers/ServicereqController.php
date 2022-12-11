@@ -28,7 +28,9 @@ class ServicereqController extends Controller
 
     public function index()
     {
+
         $servicereqs = $this->service_req->all();
+
         return view('admin.servicereq.index', compact('servicereqs'));
     }
 

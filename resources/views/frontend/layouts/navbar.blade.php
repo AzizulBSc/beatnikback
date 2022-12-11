@@ -22,6 +22,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url('/mechanics')}}">Our Mechanics</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/products')}}">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/about')}}">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/location')}}">Our Location</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Get Service</a></li>
 
                     @if (Auth::check())

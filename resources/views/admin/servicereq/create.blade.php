@@ -182,7 +182,6 @@
         
            $('#customer_id').change(function () {
              var id = $(this).val();
-
            
              $('#vehicle').find('option').not(':first').remove();
 
@@ -195,6 +194,7 @@
                     if (response.data != null) {
                         len = response.data.length;
                     }
+                    console.log(response.data);
                     if (len>0) {
                         for (var i = 0; i<len; i++) {
                              var id = response.data[i].id;

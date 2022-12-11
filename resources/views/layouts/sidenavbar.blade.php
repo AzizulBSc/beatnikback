@@ -137,8 +137,23 @@
                         </p>
                     </a>
                 </li> --}}
-
-
+                <li class="nav-item mt-auto">
+                    <a href="{{ url("/chat") }}" class="nav-link {{ (request()->is('caht*')) ? 'active': '' }}">
+                        <i class="nav-icon fas fa-paper-plane"></i>
+                        <p>
+                            Chat
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item mt-auto">
+                    <a href="{{ url("/adlocation") }}"
+                        class="nav-link {{ (request()->is('adlocation*')) ? 'active': '' }}">
+                        <i class="nav-icon fas fa-map-marker"></i>
+                        <p>
+                            Location
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item mt-auto">
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"

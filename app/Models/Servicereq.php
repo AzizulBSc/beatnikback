@@ -33,6 +33,7 @@ class Servicereq extends Model
     {
         return $this->belongsTo(Mechanic::class, 'mechanic_id');
     }
+
     public function req_service_list()
     {
         return $this->hasMany(Reqserviceid::class, 'servicereq_id');

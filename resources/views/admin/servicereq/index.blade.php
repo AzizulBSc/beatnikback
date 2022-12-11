@@ -33,29 +33,28 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body p-0">
-                        <table class="table table-striped text-center">
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-hover text-center">
                             <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>
                                     <th>Image</th>
-                                    <th>Name
+                                    <th>
+                                        Vehicle Info
+                                        {{-- Name
                                         Model
                                         Brand<br />
                                         Category<br />
-                                        Color<br />
+                                        Color<br /> --}}
                                     </th>
                                     <th>Owner<br />
                                         City<br />
                                         Addrs
                                     </th>
                                     <th>
-                                        Eng.Num<br />
-                                        Reg.Num<br />
-                                        ChasisNum<br />
-
+                                        Services
                                     </th>
-                                    <th>Model Year</th>
+                                    {{-- <th>Model Year</th> --}}
                                     <th>Payable</th>
                                     <th>Req Date</th>
                                     <th>Dedline</th>
@@ -85,14 +84,19 @@
                                         {{ $servicereq->owner->address }}<br />
                                     </td>
                                     <td>
-                                        {{$servicereq->vehicle->engin_num}}<br />
-                                        {{$servicereq->vehicle->num_plate}}<br />
-                                        {{$servicereq->vehicle->chasis_num}}
+                                        @foreach ($servicereq->req_service_list as $req_service)
+                                        @php
+                                        $services = App\Models\Service::where('id',$req_service->service_id)->get()
+                                        @endphp
+                                        @foreach($services as $service)
+                                        {{$service->name}}<br />
+                                        @endforeach
+                                        @endforeach
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         {{$servicereq->vehicle->model_year}}
 
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         Payable:{{$servicereq->payment}}<br />
                                         Paid:{{ $servicereq->paid}}
@@ -186,12 +190,10 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer d-flex justify-content-center">
-                        {{ $servicereqs->links() }}
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection

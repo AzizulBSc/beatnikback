@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="{{ asset('admin') }}/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('admin') }}/css/adminlte.min.css">
@@ -15,8 +15,16 @@
     <link rel="stylesheet" href="{{ asset('admin') }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ asset('admin') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet"
+        href="{{ asset('admin') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" />
+    <link rel="stylesheet" href="{{ asset('admin') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css" />
+    @vite(['resources/css/app.css','resources/js/app.js'])
     @yield('style')
 </head>
 
@@ -67,6 +75,22 @@
     <script src="{{ asset('admin') }}/js/adminlte.min.js"></script>
     <script src="{{ asset('admin') }}/js/bs-custom-file-input.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- DataTables  & Plugins -->
+    <script src="{{asset('admin')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('admin')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('admin')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{asset('admin')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{asset('admin')}}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{asset('admin')}}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="{{asset('admin')}}/plugins/jszip/jszip.min.js"></script>
+    <script src="{{asset('admin')}}/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="{{asset('admin')}}/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="{{asset('admin')}}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{asset('admin')}}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="{{asset('admin')}}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
     @yield('script')
     <script>
         @if(Session::has('success'))
@@ -74,7 +98,19 @@
   @endif
   $(document).ready(function () {
     bsCustomFileInput.init()
-  })
+      
+$("#example1")
+          .DataTable({
+            responsive: true,
+            lengthChange: true,
+            autoWidth: false,
+            buttons: ["excel","print", "colvis"],
+          })
+          .buttons()
+          .container()
+          .appendTo("#example1_wrapper .col-md-6:eq(0)");
+        });
+
     </script>
 
 
