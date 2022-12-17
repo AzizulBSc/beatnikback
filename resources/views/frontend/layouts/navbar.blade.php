@@ -18,8 +18,10 @@
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="nav-item active"><a class="nav-link" href="{{ url('/')}}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/services')}}">Our Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/mechanics')}}">Our Mechanics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/services')}}">Our Services</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/mechanics')}}">Our Mechanics</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/products')}}">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/about')}}">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/location')}}">Our Location</a></li>

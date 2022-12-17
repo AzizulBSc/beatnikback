@@ -19,6 +19,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
+use App\Http\Controllers\HomeController;
 
 
 
@@ -52,7 +54,7 @@ Route::get('adlocation', function () {
 Route::get('/mail', 'App\Http\Controllers\MailController@index1');
 Route::any('/mailsend', 'App\Http\Controllers\MailController@send');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index1'])->name('home');
+Route::get('/home', [HomeController::class, 'index1'])->name('home');
 Route::get('/otp', [App\Http\Controllers\HomeController::class, 'index'])->name('otp');
 Route::post('/otp', [App\Http\Controllers\HomeController::class, 'otp_verify']);
 
